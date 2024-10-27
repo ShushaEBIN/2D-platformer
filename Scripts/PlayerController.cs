@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
-    private const string Vertical = nameof(Vertical);
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;

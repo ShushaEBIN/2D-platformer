@@ -1,5 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CharacterAnimations))]
+
 public class PlayerController : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
@@ -32,11 +35,20 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.velocity = new Vector2(direction * _moveSpeed, _rigidbody.velocity.y);
 
-        _isMoving = direction != stationary ? true : false;
+        _isMoving = direction != stationary;
 
         if (_isMoving)
         {
-            _playerSprite.flipX = direction > stationary ? false : true;
+            if (direction > stationary)
+            {
+                transform.rotation = Quaternion.Euler(stationary, stationary, stationary);
+            }
+            else if (direction < stationary)
+            {
+                float rotationX = 180f;
+
+                transform.rotation = Quaternion.Euler(stationary, rotationX, stationary);
+            }
         }
 
         _animations.IsMoving = _isMoving;
@@ -44,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (_isGrounded == true && Input.GetKeyDown(KeyCode.W))
+        if (_isGrounded && Input.GetKeyDown(KeyCode.W))
         {
             _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x, _jumpForce), ForceMode2D.Impulse);
         }

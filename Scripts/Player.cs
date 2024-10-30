@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Coin))]
+
 public class Player : MonoBehaviour
 {
     private int _coins = 0;
@@ -8,7 +10,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            _coins++;
+            Coin coin = collision.gameObject.GetComponent<Coin>();
+
+            _coins += coin.Value;
 
             print($"Монеты: {_coins}");
         }

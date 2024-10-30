@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _count: 10
+  _minValue: 1
+  _maxValue: 10

@@ -1,9 +1,11 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Animator))]
+
 public class CharacterAnimations : MonoBehaviour
 {
     private Animator _animator;
-    private readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+    private readonly int _isMovingHash = Animator.StringToHash("IsMoving");
 
     public bool IsMoving { private get; set; }
 
@@ -12,8 +14,8 @@ public class CharacterAnimations : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
     
-    private void Update()
+    public void PlayMove()
     {
-        _animator.SetBool(IsMovingHash, IsMoving);
+        _animator.SetBool(_isMovingHash, IsMoving);
     }
 }

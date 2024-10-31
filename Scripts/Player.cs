@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Coin"))
+        if (collision.gameObject.TryGetComponent<Coin>(out Coin coin)) 
         {
-            Coin coin = collision.gameObject.GetComponent<Coin>();
+            coin = collision.gameObject.GetComponent<Coin>();
 
             _coins += coin.Value;
+
+            Destroy(coin.gameObject);
 
             print($"Монеты: {_coins}");
         }

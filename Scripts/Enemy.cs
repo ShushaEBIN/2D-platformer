@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
 
     private int _currentWaypoint = 0;
-    private bool _isRightMoving;
 
     private void Update()
     {
@@ -28,15 +27,6 @@ public class Enemy : MonoBehaviour
         float rotationX = 180f;
 
         if (targetPosition.x > transform.position.x)
-        {
-            _isRightMoving = true;
-        }
-        else
-        {
-            _isRightMoving = false;
-        }
-
-        if (_isRightMoving)
         {
             transform.rotation = Quaternion.Euler(stationary, stationary, stationary);
         }

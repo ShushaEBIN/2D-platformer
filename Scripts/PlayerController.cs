@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
-    [SerializeField] private SpriteRenderer _playerSprite;
 
     private bool _isGrounded;
     private bool _isMoving;
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _animations.IsMoving = _isMoving;
+        _animations.PlayMove();
     }
 
     private void Jump()
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
         {
             _isGrounded = true;
         }
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
         {
             _isGrounded = false;
         }

@@ -12,20 +12,10 @@ public class Coin : MonoBehaviour
 
     public event Action<Coin> Counted;
 
-    private void Start()
+    private IEnumerator Start()
     {
         Value = UnityEngine.Random.Range(_minValue, _maxValue + 1);
 
-        StartCoroutine();
-    }
-
-    private void StartCoroutine()
-    {
-        StartCoroutine(Count());
-    }
-
-    private IEnumerator Count()
-    {
         yield return new WaitForSeconds(_count);
 
         Counted?.Invoke(this);

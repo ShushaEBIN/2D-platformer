@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isGrounded;
     private bool _isMoving;
+    private bool _isAttacking = false;
     private Rigidbody2D _rigidbody;
     private CharacterAnimations _animations;
 
@@ -21,10 +23,27 @@ public class PlayerController : MonoBehaviour
         _animations = GetComponent<CharacterAnimations>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
+        {
+            _isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
+        {
+            _isGrounded = false;
+        }
+    }
+
     private void Update()
     {
         Move();
         Jump();
+        Attack();
     }
 
     private void Move()
@@ -62,19 +81,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Attack()
     {
-        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
-        {
-            _isGrounded = true;
+        if (Input.GetKeyDown(KeyCode.Space) && _isAttacking == false)
+        {           
+            _isAttacking = true;
+            SetAttackStatus(_isAttacking);
+
+            StartCoroutine(ResetAttack());
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void SetAttackStatus(bool isAttacking)
     {
-        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
-        {
-            _isGrounded = false;
-        }
+        _animations.IsSwordAttack = isAttacking;
+        _animations.PlayAttack();
+    }
+
+    private IEnumerator ResetAttack()
+    {
+        float timeOfAttack = _animations.ReturnSwordAttackLength();
+
+        yield return new WaitForSeconds(timeOfAttack);
+
+        _isAttacking = false;
+        SetAttackStatus(_isAttacking);
     }
 }

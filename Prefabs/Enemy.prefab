@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3977566660041672337}
   - component: {fileID: 3405252072208363952}
   - component: {fileID: 183063985399241275}
+  - component: {fileID: 5781241446625387765}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -163,11 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a08085e594c6545b495dd8a3b09026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  _speed: 5
-  _zone: {fileID: 6019633935718782842}
 --- !u!114 &183063985399241275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +176,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9b8729ea9f0794eb0f7497923e0cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5781241446625387765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465033945153487264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c21986380f23040b8906b6225c3295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypoints: []
+  _speed: 5
+  _detectionZone: {fileID: 6019633935718782842}
 --- !u!1 &5043648428713929183
 GameObject:
   m_ObjectHideFlags: 0

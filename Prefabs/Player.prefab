@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 267699158382092740}
   - component: {fileID: 1759764398612022057}
   - component: {fileID: 2368161250380702914}
-  - component: {fileID: 8783882211319975728}
+  - component: {fileID: 8690905300573513660}
+  - component: {fileID: 1310940350644316779}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce47ad46af0287428fad248ad268fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _swordAttack: {fileID: 0}
 --- !u!114 &2368161250380702914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
-  _minHealth: 1
---- !u!114 &8783882211319975728
+--- !u!114 &8690905300573513660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,12 +225,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752045029718827436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8d437555781af43ba0494abdb014da, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a24f1b8f36adcb4fac68efdbbce0327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _count: 10
-  _minValue: 1
-  _maxValue: 10
+--- !u!114 &1310940350644316779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752045029718827436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e290ed19b8b85844d96584028141cd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5266196741344782511
 PrefabInstance:
   m_ObjectHideFlags: 0

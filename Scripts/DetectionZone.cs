@@ -10,7 +10,7 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.TryGetComponent<Player>(out Player player))
+        if (collider.gameObject.TryGetComponent(out Player player))
         {
             PlayerPosition = player.transform.position;
 
@@ -20,7 +20,7 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.TryGetComponent<Player>(out Player _))
+        if (collider.gameObject.TryGetComponent(out Player _))
         {
             PlayerEscaped?.Invoke();
         }

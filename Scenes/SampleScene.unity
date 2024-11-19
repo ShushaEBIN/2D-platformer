@@ -920,6 +920,18 @@ PrefabInstance:
       propertyPath: _waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 2120611112}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 857486834}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 2120611112}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4732,6 +4744,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 325506725}
     - target: {fileID: 3405252072208363952, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1360018727}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
+      propertyPath: _waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 325506725}
+    - target: {fileID: 5781241446625387765, guid: 47fdf4059cf9614469541907be64b18c, type: 3}
       propertyPath: _waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1360018727}

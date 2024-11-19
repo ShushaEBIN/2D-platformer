@@ -3,11 +3,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CharacterAnimations))]
+[RequireComponent(typeof(InputHandler))]
 
 public class PlayerController : MonoBehaviour
 {
-    private const string Horizontal = nameof(Horizontal);
-
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
 
@@ -16,16 +15,18 @@ public class PlayerController : MonoBehaviour
     private bool _isAttacking = false;
     private Rigidbody2D _rigidbody;
     private CharacterAnimations _animations;
+    private InputHandler _inputHandler;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponent<CharacterAnimations>();
+        _inputHandler = GetComponent<InputHandler>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
+        if (collision.gameObject.TryGetComponent<Ground>(out _))
         {
             _isGrounded = true;
         }
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Ground>(out Ground _))
+        if (collision.gameObject.TryGetComponent<Ground>(out _))
         {
             _isGrounded = false;
         }
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         int stationary = 0;
-        float direction = Input.GetAxis(Horizontal);
+        float direction = _inputHandler.ReturnHorizontalInput();
 
         _rigidbody.velocity = new Vector2(direction * _moveSpeed, _rigidbody.velocity.y);
 
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (_isGrounded && Input.GetKeyDown(KeyCode.W))
+        if (_isGrounded && _inputHandler.ReturnJumpPressed())
         {
             _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x, _jumpForce), ForceMode2D.Impulse);
         }
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isAttacking == false)
+        if (_inputHandler.ReturnAttackPressed() && _isAttacking == false)
         {           
             _isAttacking = true;
             SetAttackStatus(_isAttacking);

@@ -1,55 +1,55 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Coin))]
+[RequireComponent(typeof(Ñollector))]
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 3;
-    [SerializeField] private int _minHealth = 1;
 
-    private int _health;
     private int _coins = 0;
+    private Ñollector _collector;
+
+    public int Health { get; private set; }
+    public int MaxHealth { get; private set; }
+
+    private void Awake()
+    {
+        _collector = GetComponent<Ñollector>();
+    }
+
+    private void OnEnable()
+    {
+        _collector.HealingPotionPickUped += Heal;
+        _collector.CoinPickUped += AddCoins;
+    }
+
+    private void OnDisable()
+    {
+        _collector.HealingPotionPickUped -= Heal;
+        _collector.CoinPickUped -= AddCoins;
+    }
 
     private void Start()
     {
-        _health = _maxHealth;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.TryGetComponent<HealingPotion>(out HealingPotion healingPotion))
-        {
-            if (_health != _maxHealth)
-            {
-                _health++;
-
-                Destroy(healingPotion.gameObject);
-            }
-        }
+        Health = _maxHealth;
+        MaxHealth = _maxHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Coin>(out Coin coin)) 
+        if (collision.gameObject.TryGetComponent(out Enemy _))
         {
-            coin = collision.gameObject.GetComponent<Coin>();
-
-            _coins += coin.Value;
-
-            Destroy(coin.gameObject);
-
-            print($"Ìîíåòû: {_coins}");
+            Health--;
         }
-        else if (collision.gameObject.TryGetComponent<Enemy>(out Enemy _))
-        {
-            _health--;
+    }
 
-            print(_health);
+    private void Heal()
+    {
+        Health++;
+    }
 
-            if (_health < _minHealth)
-            {
-                print("Ñìåðòü èãðîêà");
-            }
-        }        
+    private void AddCoins()
+    {
+        _coins += _collector.CoinValue;
     }
 }

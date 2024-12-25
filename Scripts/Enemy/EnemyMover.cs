@@ -1,7 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DetectionZone))]
-
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private Transform[] _waypoints;
@@ -13,11 +11,6 @@ public class EnemyMover : MonoBehaviour
     private EnemyState _currentState;
 
     private enum EnemyState { Patrolling, Hunting}
-
-    private void Awake()
-    {
-        _detectionZone = GetComponent<DetectionZone>();
-    }
 
     private void OnEnable()
     {

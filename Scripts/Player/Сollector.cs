@@ -1,26 +1,24 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-
 public class Сollector : MonoBehaviour
 {
-    private Player _player;
+    [SerializeField] private Health _health;
+    [SerializeField] private Player _player;
 
     public int CoinValue { get; private set; }
+    public int HealValue { get; private set; }
 
     public event Action CoinPickUped;
     public event Action HealingPotionPickUped;
 
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.TryGetComponent(out HealingPotion healingPotion) && _player.Health < _player.MaxHealth)
+        if (collider.gameObject.TryGetComponent(out HealingPotion healingPotion) &&
+            _health.CurrentHealth < _health.MaxHealth)
         {
+            HealValue = healingPotion.Heal;
+
             Destroy(healingPotion.gameObject);
 
             HealingPotionPickUped?.Invoke();

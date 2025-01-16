@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent (typeof(Animator))]
 
-public class CharacterAnimations : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private AnimationClip _swordAttack;
 

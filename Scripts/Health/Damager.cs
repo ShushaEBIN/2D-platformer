@@ -5,9 +5,19 @@ public class Damager : MonoBehaviour
 {
     [SerializeField] private bool _isPlayer;
 
-    public int Damage { get; private set; }
+    public float Damage { get; private set; }
 
     public event Action Damaged;
+
+    public void TakeDamage(float damage)
+    {
+        if (!_isPlayer)
+        {
+            Damage = damage;
+
+            Damaged?.Invoke();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

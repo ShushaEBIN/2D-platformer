@@ -4,8 +4,8 @@ public abstract class HealthBar : MonoBehaviour
 {
     [SerializeField] protected Health _health;
 
-    protected int _currentHealth;
-    protected int _maxHealth;
+    protected float _currentHealth;
+    protected float _maxHealth;
     protected Camera _camera;
 
     private void Awake()

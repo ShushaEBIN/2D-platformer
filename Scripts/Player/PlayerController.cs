@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CharacterAnimations))]
+[RequireComponent(typeof(CharacterAnimator))]
 [RequireComponent(typeof(InputHandler))]
+[RequireComponent(typeof(Vampirism))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,14 +15,16 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
     private bool _isAttacking = false;
     private Rigidbody2D _rigidbody;
-    private CharacterAnimations _animations;
+    private CharacterAnimator _animations;
     private InputHandler _inputHandler;
+    private Vampirism _vampirism;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _animations = GetComponent<CharacterAnimations>();
+        _animations = GetComponent<CharacterAnimator>();
         _inputHandler = GetComponent<InputHandler>();
+        _vampirism = GetComponent<Vampirism>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Attack();
+        UseVampirism();
     }
 
     private void Move()
@@ -90,6 +94,14 @@ public class PlayerController : MonoBehaviour
             SetAttackStatus(_isAttacking);
 
             StartCoroutine(ResetAttack());
+        }
+    }
+
+    private void UseVampirism()
+    {
+        if (_inputHandler.ReturnVampirismPressed())
+        {
+            _vampirism.CheckReadinessOfVampirism();
         }
     }
 

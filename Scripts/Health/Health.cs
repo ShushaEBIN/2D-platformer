@@ -1,25 +1,25 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Damager), typeof(Healher))]
+[RequireComponent(typeof(Damager), typeof(Healer))]
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private float _maxHealth = 100;
 
-    private int _minHealth = 0;
+    private float _minHealth = 0;
     private Damager _damager;
-    private Healher _healher;
+    private Healer _healher;
 
-    public int CurrentHealth {  get; private set; }
-    public int MaxHealth { get; private set; }
+    public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
 
     public event Action HealthChanged;
     
     private void Awake()
     {
         _damager = GetComponent<Damager>();
-        _healher = GetComponent<Healher>();
+        _healher = GetComponent<Healer>();
 
         CurrentHealth = _maxHealth;
         MaxHealth = _maxHealth;

@@ -19,10 +19,11 @@ GameObject:
   - component: {fileID: 8690905300573513660}
   - component: {fileID: 1310940350644316779}
   - component: {fileID: 1051469409917402767}
-  - component: {fileID: 4182727878062094317}
   - component: {fileID: 2785729254518018851}
   - component: {fileID: 5686503509711929595}
-  m_Layer: 0
+  - component: {fileID: 920788936314802292}
+  - component: {fileID: 31539292108864752}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -44,6 +45,7 @@ Transform:
   m_Children:
   - {fileID: 5449676240213412801}
   - {fileID: 1771610343675402872}
+  - {fileID: 9152291847158188120}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2720031647895439109
@@ -260,19 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayer: 1
---- !u!114 &4182727878062094317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752045029718827436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a357c24a1d29d47b841388b35ba1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collector: {fileID: 1310940350644316779}
 --- !u!114 &2785729254518018851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +290,38 @@ MonoBehaviour:
   _health: {fileID: 2785729254518018851}
   _slider: {fileID: 3881296489546925147}
   _healthBarTransform: {fileID: 6762094321913075115}
+--- !u!114 &920788936314802292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752045029718827436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56fa03d82ebc8b4ea73d1111415af5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeOfAbility: 6
+  _timeRecharge: 4
+  _checkRate: 0.1
+  _radius: 15
+  _damage: 1
+  _radiusSprite: {fileID: 697616822519448997}
+--- !u!114 &31539292108864752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752045029718827436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fe9dfe9d178b348bb22fd086aa518f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 1310940350644316779}
+  _vampirism: {fileID: 920788936314802292}
 --- !u!1 &2155214721865506932
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 5873622110110413525, guid: b8fd7e9f16def9745b8b8b4c3928d52d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5873622110110413526, guid: b8fd7e9f16def9745b8b8b4c3928d52d, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -687,3 +712,70 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.09375, y: 0.25}
   m_EdgeRadius: 0
+--- !u!1001 &6704562908316961273
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1790543062476193554}
+    m_Modifications:
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423504574109627199, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+      propertyPath: m_Name
+      value: RadiusVampirism
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+--- !u!212 &697616822519448997 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6099293075394645084, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+  m_PrefabInstance: {fileID: 6704562908316961273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9152291847158188120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2452241337260392865, guid: 122a46e7c1f77814ca99b9f5e5c77266, type: 3}
+  m_PrefabInstance: {fileID: 6704562908316961273}
+  m_PrefabAsset: {fileID: 0}

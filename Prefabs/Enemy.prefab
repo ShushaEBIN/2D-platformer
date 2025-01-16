@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 3405252072208363952}
   - component: {fileID: 5781241446625387765}
   - component: {fileID: 9220957694556706919}
-  - component: {fileID: 2013912878449526341}
   - component: {fileID: 307155479744559751}
   - component: {fileID: 2267280062157849925}
-  m_Layer: 0
+  - component: {fileID: 1364259447057360493}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+  _health: {fileID: 307155479744559751}
+  _damager: {fileID: 9220957694556706919}
 --- !u!114 &5781241446625387765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,20 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayer: 0
---- !u!114 &2013912878449526341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465033945153487264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a357c24a1d29d47b841388b35ba1b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minHealth: 1
-  maxHealth: 50
 --- !u!114 &307155479744559751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +227,20 @@ MonoBehaviour:
   _health: {fileID: 307155479744559751}
   _slider: {fileID: 1749625267866208747}
   _healthBarTransform: {fileID: 8092124706499221531}
+--- !u!114 &1364259447057360493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465033945153487264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fe9dfe9d178b348bb22fd086aa518f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collector: {fileID: 0}
+  _vampirism: {fileID: 0}
 --- !u!1 &5043648428713929183
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +254,7 @@ GameObject:
   - component: {fileID: 2150964917429673393}
   - component: {fileID: 6019633935718782842}
   - component: {fileID: 665125415058728457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

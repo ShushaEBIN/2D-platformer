@@ -5105,6 +5105,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7954624374290456590, guid: 900a775fc29902e4cb8d24739ef0a79d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954624374290456590, guid: 900a775fc29902e4cb8d24739ef0a79d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8662043973040183663, guid: 900a775fc29902e4cb8d24739ef0a79d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.00000011920929

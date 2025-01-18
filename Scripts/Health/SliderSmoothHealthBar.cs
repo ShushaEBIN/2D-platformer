@@ -7,7 +7,7 @@ class SliderSmoothHealthBar : HealthBar
     [SerializeField] private Slider _slider;
     [SerializeField] private Transform _healthBarTransform;
 
-    private void Update()
+    private void LateUpdate()
     {
         _healthBarTransform.rotation = _camera.transform.rotation;
     }

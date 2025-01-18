@@ -13,14 +13,21 @@ public class Vampirism : MonoBehaviour
 
     private bool _isReady = true;
 
+    public float TimeOfAbility { get; private set; }
+    public float TimeRecharge { get; private set; }
     public float Heal { get; private set; }
 
     public event Action Healed;
+    public event Action Actived;
+    public event Action Used;
 
     private void Awake()
     {
         _radiusSprite.enabled = false;
         UpdateRadius();
+
+        TimeOfAbility = _timeOfAbility;
+        TimeRecharge = _timeRecharge;
     }
 
     public void CheckReadinessOfVampirism()
@@ -70,6 +77,8 @@ public class Vampirism : MonoBehaviour
 
     private IEnumerator ActivateAbility()
     {
+        Actived?.Invoke();
+
         float elapsedTime = 0f;
         float timeDamage = 0f;
 
@@ -96,6 +105,8 @@ public class Vampirism : MonoBehaviour
 
     private IEnumerator ResetAbility()
     {
+        Used?.Invoke();
+
         _radiusSprite.enabled = false;
 
         yield return new WaitForSeconds(_timeRecharge);

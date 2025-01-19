@@ -1,16 +1,18 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Flipper))]
+
 public abstract class HealthBar : MonoBehaviour
 {
     [SerializeField] protected Health _health;
 
     protected float _currentHealth;
     protected float _maxHealth;
-    protected Camera _camera;
+    protected Flipper _flipper;
 
     private void Awake()
     {
-        _camera = Camera.main;
+        _flipper = GetComponent<Flipper>();
     }
 
     private void OnEnable()

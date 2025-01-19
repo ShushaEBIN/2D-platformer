@@ -5,12 +5,6 @@ using UnityEngine.UI;
 class SliderSmoothHealthBar : HealthBar
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Transform _healthBarTransform;
-
-    private void LateUpdate()
-    {
-        _healthBarTransform.rotation = _camera.transform.rotation;
-    }
 
     protected override void ChangeValue()
     {

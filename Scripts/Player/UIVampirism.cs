@@ -2,19 +2,20 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Flipper))]
+
 public class UIVampirism : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private Transform _vampirismBarTransform;
     [SerializeField] private Vampirism _vampirism;
 
     private float _maxValueSlider = 1;
     private float _minValueSlider = 0;
-    private Camera _camera;
+    private Flipper _flipper;
 
     private void Awake()
     {
-        _camera = Camera.main;
+        _flipper = GetComponent<Flipper>();
     }
 
     private void OnEnable()
@@ -27,11 +28,6 @@ public class UIVampirism : MonoBehaviour
     {
         _vampirism.Actived -= DecreaseValue;
         _vampirism.Used -= IncreaseValue;
-    }
-
-    private void LateUpdate()
-    {
-        _vampirismBarTransform.rotation = _camera.transform.rotation;
     }
 
     private void IncreaseValue()
